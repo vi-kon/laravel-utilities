@@ -1,0 +1,20 @@
+{
+    "name"             : "vi-kon/laravel-utilities",
+    "description"      : "",
+    "authors"          : [
+        {
+            "name" : "Kovács Vince",
+            "email": "vincekovacs@hotmail.com"
+        }
+    ],
+    "require"          : {
+        "php"               : ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload"         : {
+        "psr-0"   : {
+            "ViKon\\Utilities\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
