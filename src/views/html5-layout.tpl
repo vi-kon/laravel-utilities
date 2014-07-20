@@ -17,8 +17,8 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         {/block}
 
-        <meta name="author" content="Kovács Vince">
-        <meta name="description" content="">
+        <meta name="author" content="{block name="author"}Kovács Vince{/block}">
+        <meta name="description" content="{block name="description"}{/block}">
 
         <title>{block name="title"}HTML 5 Layout{/block}</title>
 
