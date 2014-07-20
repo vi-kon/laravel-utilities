@@ -1,18 +1,27 @@
 {
-    "name"             : "vi-kon/laravel-utilities",
-    "description"      : "",
-    "authors"          : [
+    "name":              "vi-kon/laravel-utilities",
+    "description":       "Utilities for Laravel 4",
+    "keywords":          [
+        "laravel",
+        "utilities"
+    ],
+    "license":           "MIT",
+    "homepage":          "https://github.com/vi-kon/laravel-utilities",
+    "authors":           [
         {
-            "name" : "Kovács Vince",
+            "name":  "Kovács Vince",
             "email": "vincekovacs@hotmail.com"
         }
     ],
-    "require"          : {
-        "php"               : ">=5.3.0",
+    "require":           {
+        "php":                ">=5.3.0",
         "illuminate/support": "4.2.*"
     },
-    "autoload"         : {
-        "psr-0"   : {
+    "suggest": {
+        "vi-kon/laravel-smarty-view": "Smarty template engine for Laravel 4"
+    },
+    "autoload":          {
+        "psr-0": {
             "ViKon\\Utilities\\": "src/"
         }
     },
