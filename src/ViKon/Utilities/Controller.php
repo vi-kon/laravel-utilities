@@ -8,8 +8,8 @@ class Controller extends \Controller
 {
 
     /**
-     * @param array      $rules Rules for validator
-     * @param array|null $input Input
+     * @param string[]     $rules rules for validator
+     * @param mixed[]|null $input input
      *
      * @return \Illuminate\Http\RedirectResponse|null
      */
@@ -31,6 +31,15 @@ class Controller extends \Controller
         return null;
     }
 
+    /**
+     * @param string[]     $rules rules for validator
+     * @param \Closure     $view
+     * @param mixed[]|null $input
+     * @param array        $data  additional data for response
+     *
+     * @return \Illuminate\Http\JsonResponse|null
+     * @throws \Exception
+     */
     protected function validateAjax(array $rules, \Closure $view, array $input = null, $data = array())
     {
         if ($input === null)
