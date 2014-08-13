@@ -191,10 +191,10 @@ Helper methods for controller classes. Extends base `\Controller` class.
 
 ### Methods
 
-| Type                   | Name           | Description                                           |
-| ---------------------- | -------------- | ----------------------------------------------------- |
-| RedirectResponse\|null | `validate`     | Validate input data via validation rules              |
-| JsonResponse\|null     | `validateAjax` | Validate ajax request input data via validation rules |
+| Type                         | Name           | Description                                           |
+| ---------------------------- | -------------- | ----------------------------------------------------- |
+| `RedirectResponse` or `null` | `validate`     | Validate input data via validation rules              |
+| `JsonResponse` or `null`     | `validateAjax` | Validate ajax request input data via validation rules |
 
 #### validate
 
@@ -204,10 +204,10 @@ Validate input data via validation rules.
 validate(array $rules, array $input = null)
 ```
 
-| Type          | Name     | Description                                            |
-| ------------- | -------- | ------------------------------------------------------ |
-| string[]      | `$rules` | validator rules                                        |
-| mixed[]\|null | `$input` | input data, if null `Input::all()` result will be used |
+| Type                | Name     | Description                                            |
+| ------------------- | -------- | ------------------------------------------------------ |
+| `string[]`          | `$rules` | validator rules                                        |
+| `mixed[]` or `null` | `$input` | input data, if null `Input::all()` result will be used |
 
 #### validateAjax
 
@@ -215,12 +215,12 @@ validate(array $rules, array $input = null)
 validateAjax(array $rules, \Closure $view, array $input = null, $data = array())
 ```
 
-| Type          | Name     | Description                                                                  |
-| ------------- | -------- | ---------------------------------------------------------------------------- |
-| string[]      | `$rules` | validator rules                                                              |
-| \Closure      | `$view`  | view renderer callback in case of validation failure (have to return `View`) |
-| mixed[]\|null | `$input` | input data, if null `Input::all()` result will be used                       |
-| mixed[]       | `$data`  | additional data for response                                                 |
+| Type                | Name     | Description                                                                  |
+| ------------------- | -------- | ---------------------------------------------------------------------------- |
+| `string[]`          | `$rules` | validator rules                                                              |
+| `\Closure`          | `$view`  | view renderer callback in case of validation failure (have to return `View`) |
+| `mixed[]` or `null` | `$input` | input data, if null `Input::all()` result will be used                       |
+| `mixed[]`           | `$data`  | additional data for response                                                 |
 
 Return array in JSON format. Returns array with merged `$data` parameter:
 
