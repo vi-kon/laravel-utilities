@@ -26,16 +26,16 @@ class Seeder extends \Seeder
         $output->writeln('<strong>Seeding table:</strong> ' . $table);
     }
 
-    public function progressbar($current, $max)
+    public function seedingProgress($current, $max)
     {
-        $output = $this->command->getOutput();
-
         $percentage = ($current / $max) * 100;
 
         $progressbar = "\r" . '<progress>' . str_pad('', floor($percentage / 2), ' ') . '</progress>'
                        . str_pad('', 50 - floor($percentage / 2), ' ');
         $progress    = str_pad(number_format(floor($percentage * 100) / 100, 2), 6, ' ', STR_PAD_LEFT) . '%'
                        . ' (' . number_format($max) . '/' . number_format($current) . ')';
+
+        $output = $this->command->getOutput();
         $output->write($progressbar . ' ' . $progress, $current == $max);
     }
-} 
+}
