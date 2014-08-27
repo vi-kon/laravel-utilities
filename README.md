@@ -1,4 +1,4 @@
-Laravel Utilities
+Laravel 4 Utilities
 =================
 
 Utilities for Laravel 4
@@ -172,7 +172,7 @@ Utilities for Laravel 4
     </div>
     <div class="container">
         {* Block container for subpage content *}
-        {block name="container"}{/block}	
+        {block name="container"}{/block}
     </div>
 {/strip}{/block}
 ```

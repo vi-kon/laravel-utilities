@@ -1,6 +1,6 @@
 {
     "name":              "vi-kon/laravel-utilities",
-    "description":       "Utilities (helper classes) for Laravel 4",
+    "description":       "Utilities for Laravel 4",
     "keywords":          [
         "laravel",
         "utilities"
