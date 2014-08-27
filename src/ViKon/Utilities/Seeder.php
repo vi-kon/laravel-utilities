@@ -8,6 +8,10 @@ use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 
 class Seeder extends \Seeder
 {
+
+    protected $currentEntryCount = 0;
+    protected $maxEntryCount = 0;
+
     public function setCommand(Command $command)
     {
         parent::setCommand($command);
@@ -18,7 +22,7 @@ class Seeder extends \Seeder
         $formatter->setStyle('progress', new OutputFormatterStyle(null, 'black', array('conceal')));
     }
 
-    public function seedingTable($table)
+    public function startTable($table)
     {
         $output = $this->command->getOutput();
 
@@ -26,16 +30,24 @@ class Seeder extends \Seeder
         $output->writeln('<strong>Seeding table:</strong> ' . $table);
     }
 
-    public function seedingProgress($current, $max)
+    public function setMaxEntryCount($max)
     {
-        $percentage = ($current / $max) * 100;
+        $this->currentEntryCount = 0;
+        $this->maxEntryCount     = $max;
+    }
+
+    public function addEntry()
+    {
+        $this->currentEntryCount++;
+
+        $output = $this->command->getOutput();
+
+        $percentage = ($this->currentEntryCount / $this->maxEntryCount) * 100;
 
         $progressbar = "\r" . '<progress>' . str_pad('', floor($percentage / 2), ' ') . '</progress>'
                        . str_pad('', 50 - floor($percentage / 2), ' ');
         $progress    = str_pad(number_format(floor($percentage * 100) / 100, 2), 6, ' ', STR_PAD_LEFT) . '%'
-                       . ' (' . number_format($max) . '/' . number_format($current) . ')';
-
-        $output = $this->command->getOutput();
-        $output->write($progressbar . ' ' . $progress, $current == $max);
+                       . ' (' . number_format($this->maxEntryCount) . '/' . number_format($this->currentEntryCount) . ')';
+        $output->write($progressbar . ' ' . $progress, $this->currentEntryCount == $this->maxEntryCount);
     }
 }
