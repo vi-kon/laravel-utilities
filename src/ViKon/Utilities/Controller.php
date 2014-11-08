@@ -23,9 +23,7 @@ class Controller extends \Controller
         $validator = \Validator::make($input, $rules);
         if ($validator->fails())
         {
-            return \Redirect::back()
-                            ->withErrors($validator)
-                            ->withInput();
+            return \Redirect::back()->withErrors($validator)->withInput();
         }
 
         return null;
@@ -40,7 +38,7 @@ class Controller extends \Controller
      * @return \Illuminate\Http\JsonResponse|null
      * @throws \Exception
      */
-    protected function validateAjax(array $rules, \Closure $view, array $input = null, $data = array())
+    protected function validateAjax(array $rules, \Closure $view, array $input = null, $data = [])
     {
         if ($input === null)
         {
@@ -58,15 +56,15 @@ class Controller extends \Controller
                 throw new \Exception('View closure have to return Illuminate\View\View object');
             }
 
-            $content = $view->withErrors($validator->errors())
-                            ->render();
+            $content = $view->withErrors($validator->errors())->render();
 
             \Session::remove('_old_input');
 
-            $data = array_merge(array(
+            $data = array_merge([
                                     'success' => false,
                                     'content' => $content,
-                                ), $data);
+                                ],
+                                $data);
 
             return \Response::json($data);
         }

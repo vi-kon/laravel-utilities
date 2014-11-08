@@ -8,8 +8,8 @@ use Illuminate\Database\Schema\Blueprint;
 class Migration extends \Illuminate\Database\Migrations\Migration
 {
     private $actualTableName = null;
-    private $tables = array();
-    private $foreignKeys = array();
+    private $tables          = [];
+    private $foreignKeys     = [];
 
     public function up()
     {
@@ -30,14 +30,15 @@ class Migration extends \Illuminate\Database\Migrations\Migration
                 $onUpdate      = $foreignKey['onUpdate'];
                 $onDelete      = $foreignKey['onDelete'];
 
-                $callback = function (Blueprint $table) use ($column, $foreignTable, $foreignColumn, $onUpdate, $onDelete)
-                {
-                    $table->foreign($column)
-                          ->references($foreignColumn)
-                          ->on($foreignTable)
-                          ->onUpdate($onUpdate)
-                          ->onDelete($onDelete);
-                };
+                $callback =
+                    function (Blueprint $table) use ($column, $foreignTable, $foreignColumn, $onUpdate, $onDelete)
+                    {
+                        $table->foreign($column)
+                              ->references($foreignColumn)
+                              ->on($foreignTable)
+                              ->onUpdate($onUpdate)
+                              ->onDelete($onDelete);
+                    };
                 \Schema::table($table, $callback);
             }
         } catch (\Exception $ex)
@@ -66,27 +67,28 @@ class Migration extends \Illuminate\Database\Migrations\Migration
         {
             return strtoupper(ltrim($match[0], '_'));
         };
-        $methodName = 'load' . ucfirst(preg_replace_callback('/_[a-z]?/', $callback, preg_replace('/[0-9]*$/', '', $name)));
+        $methodName =
+            'load' . ucfirst(preg_replace_callback('/_[a-z]?/', $callback, preg_replace('/[0-9]*$/', '', $name)));
 
         $callback            = function (Blueprint $table) use ($that, $methodName)
         {
             $table->engine = 'InnoDB';
             $that->$methodName($table);
         };
-        $this->tables[$name] = array(
+        $this->tables[$name] = [
             'callback' => $callback,
-        );
+        ];
     }
 
     protected function foreign($column, $foreignTable, $foreignColumn = 'id', $onUpdate = null, $onDelete = null)
     {
-        $this->foreignKeys[] = array(
+        $this->foreignKeys[] = [
             'table'         => $this->actualTableName,
             'column'        => $column,
             'foreignTable'  => $foreignTable,
             'foreignColumn' => $foreignColumn,
             'onUpdate'      => $onUpdate,
             'onDelete'      => $onDelete,
-        );
+        ];
     }
 } 
