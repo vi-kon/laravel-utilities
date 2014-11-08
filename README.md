@@ -1,4 +1,4 @@
-Laravel Utilities
+Laravel 4 Utilities
 =================
 
 Utilities for Laravel 4
@@ -7,13 +7,15 @@ Utilities for Laravel 4
 
 | Name                  | Description                           |
 |-----------------------|---------------------------------------|
-| **html5-layout.tpl**  | Smarty base template for HTML 5 pages |
+| **html5-layout**      | HTML 5 layout                         |
 
-## html5-layout.tpl
+## html5-layout
 
-**Note:** This layout requires Smarty functions implemented in **vi-kon/laravel-smarty-view** package.
+There are two templates. One for **Blade** template engine and one for **Smarty** template engine.
 
-### Avalaible blocks:
+**Note:** html5-layout.tpl requires Smarty functions implemented in **vi-kon/laravel-smarty-view** package.
+
+### Avalaible blocks / sections:
 
 | Name                  | Description                           |
 |-----------------------|---------------------------------------|
@@ -27,7 +29,15 @@ Utilities for Laravel 4
 | **title**             | Page title                            |
 | **viewport**          | Viewport meta data                    |
 
+Block / section definitions:
+
 #### author
+
+```blade
+<!-- ... other head stuff ... -->
+<meta name="author" content="@yield('author', 'Kovács Vince')"/>
+<!-- ... other head stuff ... -->
+```
 
 ```smarty
 <!-- ... other head stuff ... -->
@@ -37,6 +47,12 @@ Utilities for Laravel 4
 
 #### body
 
+```blade
+<body>
+    @yield('body')
+</body>
+```
+
 ```smarty
 <body>
     {block name="body"}{/block}
@@ -45,6 +61,14 @@ Utilities for Laravel 4
 
 #### description
 
+```blade
+<!-- ... other head stuff ... -->
+<meta name="description" content="@yield('description')"/>
+<!-- ... other head stuff ... -->
+```
+
+or
+
 ```smarty
 <!-- ... other head stuff ... -->
 <meta name="description" content="{block name="description"}{/block}">
@@ -52,6 +76,15 @@ Utilities for Laravel 4
 ```
 
 #### head
+
+```blade
+<head>
+    <!-- ... other head stuff ... -->
+    @yield('head')
+</head>
+```
+
+or
 
 ```smarty
 <head>
@@ -62,6 +95,15 @@ Utilities for Laravel 4
 
 #### scripts
 
+```blade
+        <!-- ... body inner ... -->
+    </body>
+    @yield('scripts')
+</html>
+```
+
+or
+
 ```smarty
         <!-- ... body inner ... -->
     </body>
@@ -70,6 +112,16 @@ Utilities for Laravel 4
 ```
 
 #### scripts-head
+
+```blade
+<head>
+    <!-- ... other head stuff ... -->
+    @yield('scripts-head')
+    <!-- ... other head stuff ... -->
+</head>
+```
+
+or
 
 ```smarty
 <head>
@@ -81,6 +133,16 @@ Utilities for Laravel 4
 
 #### styles
 
+```blade
+<head>
+    <!-- ... other head stuff ... -->
+    @yield('styles')
+    <!-- ... other head stuff ... -->
+</head>
+```
+
+or
+
 ```smarty
 <head>
     <!-- ... other head stuff ... -->
@@ -91,6 +153,14 @@ Utilities for Laravel 4
 
 #### title
 
+```blade
+<!-- ... other head stuff ... -->
+<title>@yield('title', 'HTML 5 Layout')</title>
+<!-- ... other head stuff ... -->
+```
+
+or
+
 ```smarty
 <!-- ... other head stuff ... -->
 <title>{block name="title"}HTML 5 Layout{/block}</title>
@@ -98,6 +168,18 @@ Utilities for Laravel 4
 ```
 
 #### viewport
+
+```blade
+<head>
+    <!-- ... other header stuff ... -->
+    @section('viewport')
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    @show
+    <!-- ... other header stuff ... -->
+</head>
+```
+
+or
 
 ```smarty
 <head>
@@ -172,7 +254,7 @@ Utilities for Laravel 4
     </div>
     <div class="container">
         {* Block container for subpage content *}
-        {block name="container"}{/block}	
+        {block name="container"}{/block}
     </div>
 {/strip}{/block}
 ```
