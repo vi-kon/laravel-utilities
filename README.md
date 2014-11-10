@@ -1,21 +1,63 @@
-Laravel 4 Utilities
-=================
+# Laravel 5 Utilities
 
-Utilities for Laravel 4
+Utilities for **Laravel 5**. View helpers and other usefull classes.
 
-# Views
+## Table of contents
+
+* [Known issues](#known-issues)
+* [Todo](#todo)
+* [Changes](#changes)
+* [Installation](#installation)
+* [Views](#views)
+	* [html5-layout](#html5-layout)
+* [Classes](#classes)
+	* [Migration](#migrationclass)
+	* [Seeder](#seederclass)
+
+## Known issues
+
+None
+
+## Todo
+
+* Fix incoming bugs
+* Finish documentation
+
+## Changes
+
+Version 2.0
+
+- **Laravel 5** support (requirement)
+- **Controller** class removed (Laravel 5 supports validation via **FormRequest** classes)
+- Code optimalization with Laravel 5 new features and conventions
+
+## Installation
+
+To your `composer.json` file add following lines:
+
+```javascript
+// to your "require" object
+"vi-kon/laravel-utilities": "2.*"
+```
+In your Laravel 5 project add following lines to `app.php`:
+```php
+// to your providers array
+'ViKon\Utilities\UtilitiesServiceProvider',
+```
+
+## Views
 
 | Name                  | Description                           |
 |-----------------------|---------------------------------------|
 | **html5-layout**      | HTML 5 layout                         |
 
-## html5-layout
+### html5-layout
 
 There are two templates. One for **Blade** template engine and one for **Smarty** template engine.
 
 **Note:** html5-layout.tpl requires Smarty functions implemented in **vi-kon/laravel-smarty-view** package.
 
-### Avalaible blocks / sections:
+#### Avalaible blocks / sections:
 
 | Name                  | Description                           |
 |-----------------------|---------------------------------------|
@@ -31,7 +73,7 @@ There are two templates. One for **Blade** template engine and one for **Smarty*
 
 Block / section definitions:
 
-#### author
+##### author
 
 ```blade
 <!-- ... other head stuff ... -->
@@ -45,7 +87,7 @@ Block / section definitions:
 <!-- ... other head stuff ... -->
 ```
 
-#### body
+##### body
 
 ```blade
 <body>
@@ -59,7 +101,7 @@ Block / section definitions:
 </body>
 ```
 
-#### description
+##### description
 
 ```blade
 <!-- ... other head stuff ... -->
@@ -75,7 +117,7 @@ or
 <!-- ... other head stuff ... -->
 ```
 
-#### head
+##### head
 
 ```blade
 <head>
@@ -93,7 +135,7 @@ or
 </head>
 ```
 
-#### scripts
+##### scripts
 
 ```blade
         <!-- ... body inner ... -->
@@ -111,7 +153,7 @@ or
 </html>
 ```
 
-#### scripts-head
+##### scripts-head
 
 ```blade
 <head>
@@ -131,7 +173,7 @@ or
 </head>
 ```
 
-#### styles
+##### styles
 
 ```blade
 <head>
@@ -151,7 +193,7 @@ or
 </head>
 ```
 
-#### title
+##### title
 
 ```blade
 <!-- ... other head stuff ... -->
@@ -167,7 +209,7 @@ or
 <!-- ... other head stuff ... -->
 ```
 
-#### viewport
+##### viewport
 
 ```blade
 <head>
@@ -191,21 +233,21 @@ or
 </head>
 ```
 
-### Usage
+#### Usage
 
-#### Example "site-layout.tpl"
+##### Example "app-layout.tpl"
 
 ```smarty
 {extends file="view:utilities::html5-layout"}
 
 
 {block name="title"}{strip}
-    {lang}site.title{/lang}
+    {lang}app.title{/lang}
 {/strip}{/block}
 
 
 {block name="description"}{strip}
-    {lang}site.description{/lang}
+    {lang}app.description{/lang}
 {/strip}{/block}
 
 
@@ -233,8 +275,8 @@ or
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-8">
-                    <h1>{lang}site.header.title{/lang}</h1>
-                    <p class="lead text-muted">{lang}site.header.title-lead{/lang}</p>
+                    <h1>{lang}app.header.title{/lang}</h1>
+                    <p class="lead text-muted">{lang}app.header.title-lead{/lang}</p>
                 </div>
 
                 {if $user !== null}
@@ -243,10 +285,10 @@ or
                         &nbsp;|&nbsp;
                         <a href="{url _name="user.ajax.modal.edit"}" type="button"
                            rel="tooltip" data-toggle="modal" data-target="#modal">
-                            {lang}site.header.btn.settings{/lang}
+                            {lang}app.header.btn.settings{/lang}
                         </a>
                         &nbsp;|&nbsp;
-                        <a href="{url _name="auth.logout"}">{lang}site.header.btn.logout{/lang}</a>
+                        <a href="{url _name="auth.logout"}">{lang}app.header.btn.logout{/lang}</a>
                     </div>
                 {/if}
             </div>
@@ -263,61 +305,9 @@ or
 
 | Name                            | Description                               |
 |---------------------------------|-------------------------------------------|
-| **ViKon\Utilities\Controller**  | Helper methods for **Controller**         |
 | **ViKon\Utilities\Migration**   | Helper methods for **database migration** |
 | **ViKon\Utilities\Seeder**      | Helper methods for **database seeder**    |
 
-## Controller
-
-Helper methods for controller classes. Extends base `\Controller` class.
-
-### Methods
-
-| Type                         | Name           | Description                                           |
-| ---------------------------- | -------------- | ----------------------------------------------------- |
-| `RedirectResponse` or `null` | `validate`     | Validate input data via validation rules              |
-| `JsonResponse` or `null`     | `validateAjax` | Validate ajax request input data via validation rules |
-
-#### validate
-
-Validate input data via validation rules.
-
-```php
-validate(array $rules, array $input = null)
-```
-
-| Type                | Name     | Description                                            |
-| ------------------- | -------- | ------------------------------------------------------ |
-| `string[]`          | `$rules` | validator rules                                        |
-| `mixed[]` or `null` | `$input` | input data, if null `Input::all()` result will be used |
-
-#### validateAjax
-
-```php
-validateAjax(array $rules, \Closure $view, array $input = null, $data = array())
-```
-
-| Type                | Name     | Description                                                                  |
-| ------------------- | -------- | ---------------------------------------------------------------------------- |
-| `string[]`          | `$rules` | validator rules                                                              |
-| `\Closure`          | `$view`  | view renderer callback in case of validation failure (have to return `View`) |
-| `mixed[]` or `null` | `$input` | input data, if null `Input::all()` result will be used                       |
-| `mixed[]`           | `$data`  | additional data for response                                                 |
-
-Return array in JSON format. Returns array with merged `$data` parameter:
-
-```php
-array(
-  'success' => true,
-);
-
-// or
-
-array(
-  'success' => false,
-  'content' => $view(),
-);
-```
 
 ## License
 
