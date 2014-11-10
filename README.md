@@ -18,10 +18,16 @@ Utilities for **Laravel 5**. View helpers and other usefull classes.
 
 None
 
+---
+[Back to top](#laravel-5-utilities)
+
 ## Todo
 
 * Fix incoming bugs
 * Finish documentation
+
+---
+[Back to top](#laravel-5-utilities)
 
 ## Changes
 
@@ -30,6 +36,9 @@ Version 2.0
 - **Laravel 5** support (requirement)
 - **Controller** class removed (Laravel 5 supports validation via **FormRequest** classes)
 - Code optimalization with Laravel 5 new features and conventions
+
+---
+[Back to top](#laravel-5-utilities)
 
 ## Installation
 
@@ -45,11 +54,18 @@ In your Laravel 5 project add following lines to `app.php`:
 'ViKon\Utilities\UtilitiesServiceProvider',
 ```
 
+---
+[Back to top](#laravel-5-utilities)
+
 ## Views
 
 | Name                  | Description                           |
 |-----------------------|---------------------------------------|
 | **html5-layout**      | HTML 5 layout                         |
+
+
+---
+[Back to top](#laravel-5-utilities)
 
 ### html5-layout
 
@@ -233,6 +249,9 @@ or
 </head>
 ```
 
+---
+[Back to top](#laravel-5-utilities)
+
 #### Usage
 
 ##### Example "app-layout.tpl"
@@ -301,12 +320,19 @@ or
 {/strip}{/block}
 ```
 
+---
+[Back to top](#laravel-5-utilities)
+
 # Classes
 
 | Name                            | Description                               |
 |---------------------------------|-------------------------------------------|
 | **ViKon\Utilities\Migration**   | Helper methods for **database migration** |
 | **ViKon\Utilities\Seeder**      | Helper methods for **database seeder**    |
+
+
+---
+[Back to top](#laravel-5-utilities)
 
 
 ## License
