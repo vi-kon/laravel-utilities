@@ -13,6 +13,8 @@ Utilities for **Laravel 5**. View helpers and other usefull classes.
 * [Classes](#classes)
 	* [Migration](#migrationclass)
 	* [Seeder](#seederclass)
+* [Middleware](#middleware)
+	* [IsAjax middleware](#isajax-middleware)
 
 ## Known issues
 
@@ -35,12 +37,15 @@ Version 2.0
 
 - **Laravel 5** support (requirement)
 - **Controller** class removed (Laravel 5 supports validation via **FormRequest** classes)
+- New middleware features (**IsAjax**)
 - Code optimalization with Laravel 5 new features and conventions
 
 ---
 [Back to top](#laravel-5-utilities)
 
 ## Installation
+
+### Base
 
 To your `composer.json` file add following lines:
 
@@ -52,6 +57,14 @@ In your Laravel 5 project add following lines to `app.php`:
 ```php
 // to your providers array
 'ViKon\Utilities\UtilitiesServiceProvider',
+```
+
+## Middleware
+
+To use middleware class assigned to route need to assign short-hand key to `middleware` property of your `app/Providers/RouteServiceProvider` class:
+```php
+// to your middleware array
+'ajax' => 'ViKon\Utilities\Middleware\IsAjax',
 ```
 
 ---
@@ -323,7 +336,7 @@ or
 ---
 [Back to top](#laravel-5-utilities)
 
-# Classes
+## Classes
 
 | Name                            | Description                               |
 |---------------------------------|-------------------------------------------|
@@ -334,6 +347,30 @@ or
 ---
 [Back to top](#laravel-5-utilities)
 
+## Middleware
+
+Utilities middleware classes allow differend features.
+
+* [IsAjax](#isajax-middleware) - check if current request is ajax request or not
+
+---
+[Back to top](#laravel-5-utilities)
+
+### IsAjax middleware
+
+Check if current request is ajax request or not. If request is not ajax request, then throws `NotFoundHttpException` exception.
+
+#### Usage
+
+```php
+$options = [
+    'middleware' => 'ajax',
+];
+Route::get('URL', $options);
+```
+
+---
+[Back to top](#laravel-5-utilities)
 
 ## License
 
