@@ -23,3 +23,28 @@ if (!function_exists('json_response'))
         return $factory->json($data, $status, $headers, $options);
     }
 }
+
+if (!function_exists('view_response'))
+{
+    /**
+     * Return a new view response from the application.
+     *
+     * @param string $view
+     * @param array  $data
+     * @param int    $status
+     * @param array  $headers
+     *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    function view_response($view, $data = [], $status = 200, array $headers = [])
+    {
+        $factory = app('Illuminate\Contracts\Routing\ResponseFactory');
+
+        if (func_num_args() === 0)
+        {
+            return $factory;
+        }
+
+        return $factory->view($view, $data, $status, $headers);
+    }
+}

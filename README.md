@@ -17,6 +17,7 @@ Utilities for **Laravel 5**. View helpers and other usefull classes.
 	* [IsAjax middleware](#isajax-middleware)
 * [Helpers](#helpers)
     * [json_response](#json_response-function)
+    * [view_response](#view_response-function)
 
 ## Known issues
 
@@ -381,6 +382,9 @@ Helper functions are shortcuts or aliases for app functions and methods.
 ### json_response function
 
 `json_response` function is alias for `new JsonResponse`.
+
+---
+[Back to top](#laravel-5-utilities)
 
 ## License
 
