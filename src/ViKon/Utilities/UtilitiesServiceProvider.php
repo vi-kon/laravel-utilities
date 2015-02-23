@@ -2,8 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class UtilitiesServiceProvider extends ServiceProvider
-{
+class UtilitiesServiceProvider extends ServiceProvider {
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -13,12 +12,20 @@ class UtilitiesServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     * Bootstrap the application events.
+     *
+     * @return void
+     */
+    public function boot() {
+        $this->loadViewsFrom(__DIR__ . '/../../views', 'utilities');
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         //
     }
 
@@ -27,8 +34,7 @@ class UtilitiesServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
-    {
+    public function provides() {
         return [];
     }
 }
