@@ -6,8 +6,7 @@ use Closure;
 use Illuminate\Contracts\Routing\Middleware;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class IsAjax implements Middleware
-{
+class IsAjax implements Middleware {
 
     /**
      * Handle an incoming request.
@@ -17,10 +16,8 @@ class IsAjax implements Middleware
      *
      * @return \Illuminate\Http\RedirectResponse|mixed
      */
-    public function handle($request, Closure $next)
-    {
-        if (!$request->ajax())
-        {
+    public function handle($request, Closure $next) {
+        if (!$request->ajax()) {
             throw new NotFoundHttpException('Not ajax request');
         }
 
