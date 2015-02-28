@@ -5,6 +5,13 @@ namespace ViKon\Utilities;
 
 use Illuminate\Database\Schema\Blueprint;
 
+/**
+ * Class Migration
+ *
+ * @author  Kovács Vince <vincekovacs@hotmail.com>
+ *
+ * @package ViKon\Utilities
+ */
 class Migration extends \Illuminate\Database\Migrations\Migration {
     private $actualTableName = null;
     private $tables = [];

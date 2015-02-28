@@ -6,6 +6,13 @@ use Closure;
 use Illuminate\Contracts\Routing\Middleware;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Class IsAjax
+ *
+ * @author  Kovács Vince <vincekovacs@hotmail.com>
+ *
+ * @package ViKon\Utilities\Middleware
+ */
 class IsAjax implements Middleware {
 
     /**

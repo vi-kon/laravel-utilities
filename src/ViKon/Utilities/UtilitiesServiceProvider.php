@@ -2,6 +2,13 @@
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class UtilitiesServiceProvider
+ *
+ * @author  Kovács Vince <vincekovacs@hotmail.com>
+ *
+ * @package ViKon\Utilities
+ */
 class UtilitiesServiceProvider extends ServiceProvider {
 
     /**

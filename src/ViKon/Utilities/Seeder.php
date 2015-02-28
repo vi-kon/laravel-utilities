@@ -6,6 +6,13 @@ namespace ViKon\Utilities;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 
+/**
+ * Class Seeder
+ *
+ * @author  Kovács Vince <vincekovacs@hotmail.com>
+ *
+ * @package ViKon\Utilities
+ */
 class Seeder extends \Illuminate\Database\Seeder {
 
     /** @var int */
