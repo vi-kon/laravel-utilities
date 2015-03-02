@@ -2,8 +2,14 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class UtilitiesServiceProvider extends ServiceProvider
-{
+/**
+ * Class UtilitiesServiceProvider
+ *
+ * @author  Kovács Vince <vincekovacs@hotmail.com>
+ *
+ * @package ViKon\Utilities
+ */
+class UtilitiesServiceProvider extends ServiceProvider {
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -17,19 +23,8 @@ class UtilitiesServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        $this->package('vi-kon/utilities');
-    }
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
+    public function boot() {
+        $this->loadViewsFrom(__DIR__ . '/../../views', 'utilities');
     }
 
     /**
@@ -37,8 +32,16 @@ class UtilitiesServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
-    {
-        return array();
+    public function provides() {
+        return [];
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register() {
+        //
     }
 }
