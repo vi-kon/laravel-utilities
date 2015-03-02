@@ -24,7 +24,7 @@ Utilities for **Laravel 5**. View helpers and other usefull classes.
 None
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 ## Todo
 
@@ -32,7 +32,7 @@ None
 * Finish documentation
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 ## Changes
 
@@ -44,7 +44,7 @@ Version 2.0
 - Code optimalization with Laravel 5 new features and conventions
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 ## Installation
 
@@ -71,7 +71,7 @@ To use middleware class assigned to route need to assign short-hand key to `midd
 ```
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 ## Views
 
@@ -81,7 +81,7 @@ To use middleware class assigned to route need to assign short-hand key to `midd
 
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 ### html5-layout
 
@@ -266,7 +266,7 @@ or
 ```
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 #### Usage
 
@@ -337,7 +337,7 @@ or
 ```
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 ## Classes
 
@@ -348,7 +348,7 @@ or
 
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 ## Middleware
 
@@ -357,7 +357,7 @@ Utilities middleware classes allow differend features.
 * [IsAjax](#isajax-middleware) - check if current request is ajax request or not
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 ### IsAjax middleware
 
@@ -373,7 +373,7 @@ Route::get('URL', $options);
 ```
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 ## Helpers
 
@@ -384,8 +384,11 @@ Helper functions are shortcuts or aliases for app functions and methods.
 `json_response` function is alias for `new JsonResponse`.
 
 ---
-[Back to top](#laravel-5-utilities)
+[Back to top][top]
 
 ## License
 
 This package is licensed under the MIT License
+
+
+[top]: #laravel-5-parser-and-lexer
