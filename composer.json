@@ -1,6 +1,6 @@
 {
   "name"             : "vi-kon/laravel-utilities",
-  "description"      : "Utilities for Laravel 4",
+  "description"      : "Utilities for Laravel 5",
   "keywords"         : [
     "laravel",
     "utilities"
@@ -18,7 +18,7 @@
     "illuminate/support": "~5.0"
   },
   "suggest"          : {
-    "vi-kon/laravel-smarty-view": "Smarty template engine for Laravel 4"
+    "vi-kon/laravel-smarty-view": "Smarty template engine for Laravel 5"
   },
   "autoload"         : {
     "psr-0": {
