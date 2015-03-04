@@ -55,7 +55,7 @@ class Seeder extends \Illuminate\Database\Seeder {
     /**
      * Add new entry
      */
-    public function addEntry() {
+    public function incProcessedEntryCount() {
         $this->currentEntryCount++;
 
         $output = $this->command->getOutput();
