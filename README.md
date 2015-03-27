@@ -9,15 +9,10 @@ Utilities for **Laravel 5**. View helpers and other usefull classes.
 * [Changes](#changes)
 * [Installation](#installation)
 * [Views](#views)
-	* [html5-layout](#html5-layout)
 * [Classes](#classes)
-	* [Migration](#migrationclass)
-	* [Seeder](#seederclass)
+* [Traits](#traits)
 * [Middleware](#middleware)
-	* [IsAjax middleware](#isajax-middleware)
 * [Helpers](#helpers)
-    * [json_response](#json_response-function)
-    * [view_response](#view_response-function)
 
 ## Known issues
 
@@ -75,10 +70,7 @@ To use middleware class assigned to route need to assign short-hand key to `midd
 
 ## Views
 
-| Name                  | Description                           |
-|-----------------------|---------------------------------------|
-| **html5-layout**      | HTML 5 layout                         |
-
+* [html5-layout](#html5-layout) - HTML 5 layout
 
 ---
 [Back to top][top]
@@ -341,18 +333,46 @@ or
 
 ## Classes
 
-| Name                            | Description                               |
-|---------------------------------|-------------------------------------------|
-| **ViKon\Utilities\Migration**   | Helper methods for **database migration** |
-| **ViKon\Utilities\Seeder**      | Helper methods for **database seeder**    |
+* [Migration](#migrationclass) - helper methods for **database migration**
+* [Seeder](#seederclass) - helper methods for **database seeder**
 
+---
+[Back to top][top]
+
+## Traits
+
+* [ConsoleProgress](#consoleprogresstrait) - progressbar for console applications
+
+### ConsoleProgress trait
+
+This trait help display a progressbar on console:
+
+```bash
+############--------------------------------------  24.54% (508,331/124,752)
+```
+
+**Usage**
+
+```php
+// Initialize progressbar
+$this->initProgressbar();
+// Reset progress and output a message
+$this->startProgress('Seed agt_agent_types table');
+// Set progressbar elements
+$this->setProgressMax(12);
+
+// ...
+
+// Make step in progressbar
+$this->progress();
+```
 
 ---
 [Back to top][top]
 
 ## Middleware
 
-Utilities middleware classes allow differend features.
+Utilities middleware classes allow different features.
 
 * [IsAjax](#isajax-middleware) - check if current request is ajax request or not
 
@@ -378,6 +398,9 @@ Route::get('URL', $options);
 ## Helpers
 
 Helper functions are shortcuts or aliases for app functions and methods.
+
+* [json_response](#json_response-function)
+* [view_response](#view_response-function)
 
 ### json_response function
 
