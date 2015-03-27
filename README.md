@@ -31,12 +31,16 @@ None
 
 ## Changes
 
+Version 2.1
+
+- The **Seeder** class functionality replaced by **ConsoleProgressbar** trait
+
 Version 2.0
 
 - **Laravel 5** support (requirement)
 - **Controller** class removed (Laravel 5 supports validation via **FormRequest** classes)
 - New middleware features (**IsAjax**)
-- Code optimalization with Laravel 5 new features and conventions
+- Code optimization with Laravel 5 new features and conventions
 
 ---
 [Back to top][top]
@@ -334,21 +338,22 @@ or
 ## Classes
 
 * [Migration](#migrationclass) - helper methods for **database migration**
-* [Seeder](#seederclass) - helper methods for **database seeder**
 
 ---
 [Back to top][top]
 
 ## Traits
 
-* [ConsoleProgress](#consoleprogresstrait) - progressbar for console applications
+* [ConsoleProgressbar](#consoleprogressbartrait) - progressbar for console applications
 
 ### ConsoleProgress trait
 
 This trait help display a progressbar on console:
 
+**Output**
+
 ```bash
-############--------------------------------------  24.54% (508,331/124,752)
+############--------------------------------------  24.54% (124,752/508,331)
 ```
 
 **Usage**
