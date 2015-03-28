@@ -9,15 +9,10 @@ Utilities for **Laravel 5**. View helpers and other usefull classes.
 * [Changes](#changes)
 * [Installation](#installation)
 * [Views](#views)
-	* [html5-layout](#html5-layout)
 * [Classes](#classes)
-	* [Migration](#migrationclass)
-	* [Seeder](#seederclass)
+* [Traits](#traits)
 * [Middleware](#middleware)
-	* [IsAjax middleware](#isajax-middleware)
 * [Helpers](#helpers)
-    * [json_response](#json_response-function)
-    * [view_response](#view_response-function)
 
 ## Known issues
 
@@ -36,12 +31,16 @@ None
 
 ## Changes
 
+Version 2.1
+
+- The **Seeder** class functionality replaced by **ConsoleProgressbar** trait
+
 Version 2.0
 
 - **Laravel 5** support (requirement)
 - **Controller** class removed (Laravel 5 supports validation via **FormRequest** classes)
 - New middleware features (**IsAjax**)
-- Code optimalization with Laravel 5 new features and conventions
+- Code optimization with Laravel 5 new features and conventions
 
 ---
 [Back to top][top]
@@ -75,10 +74,7 @@ To use middleware class assigned to route need to assign short-hand key to `midd
 
 ## Views
 
-| Name                  | Description                           |
-|-----------------------|---------------------------------------|
-| **html5-layout**      | HTML 5 layout                         |
-
+* [html5-layout](#html5-layout) - HTML 5 layout
 
 ---
 [Back to top][top]
@@ -341,18 +337,47 @@ or
 
 ## Classes
 
-| Name                            | Description                               |
-|---------------------------------|-------------------------------------------|
-| **ViKon\Utilities\Migration**   | Helper methods for **database migration** |
-| **ViKon\Utilities\Seeder**      | Helper methods for **database seeder**    |
+* [Migration](#migrationclass) - helper methods for **database migration**
 
+---
+[Back to top][top]
+
+## Traits
+
+* [ConsoleProgressbar](#consoleprogressbartrait) - progressbar for console applications
+
+### ConsoleProgress trait
+
+This trait help display a progressbar on console:
+
+**Output**
+
+```bash
+############--------------------------------------  24.54% (124,752/508,331)
+```
+
+**Usage**
+
+```php
+// Initialize progressbar
+$this->initProgressbar();
+// Reset progress and output a message
+$this->startProgress('Seed agt_agent_types table');
+// Set progressbar elements
+$this->setProgressMax(12);
+
+// ...
+
+// Make step in progressbar
+$this->progress();
+```
 
 ---
 [Back to top][top]
 
 ## Middleware
 
-Utilities middleware classes allow differend features.
+Utilities middleware classes allow different features.
 
 * [IsAjax](#isajax-middleware) - check if current request is ajax request or not
 
@@ -378,6 +403,9 @@ Route::get('URL', $options);
 ## Helpers
 
 Helper functions are shortcuts or aliases for app functions and methods.
+
+* [json_response](#json_response-function)
+* [view_response](#view_response-function)
 
 ### json_response function
 
