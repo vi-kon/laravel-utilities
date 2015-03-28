@@ -18,6 +18,9 @@ trait ConsoleProgressbar {
     /** @var int */
     protected $progressMax = 0;
 
+    /** @var null|int */
+    protected $startTime = null;
+
     public function initProgressbar() {
         $formatter = $this->output->getFormatter();
         $formatter->setStyle('strong', new OutputFormatterStyle('green', null, ['bold']));
@@ -39,10 +42,12 @@ trait ConsoleProgressbar {
      * @param null|string $text header text
      */
     public function startProgress($text = null) {
+        $this->startTime = microtime(true);
         $this->progressCurrent = 0;
         if ($text !== null) {
             $this->output->writeln($text);
         }
+        $this->output->write('<info>Loading...</info>');
     }
 
     /**
@@ -60,11 +65,18 @@ trait ConsoleProgressbar {
 
         $percentage = ($this->progressCurrent / $this->progressMax) * 100;
 
-        $progressbar = "\r" . '<progress>' . str_pad('', floor($percentage / 2), '#') . '</progress>' .
-            str_pad('', 50 - floor($percentage / 2), '-');
+        $currentTime = microtime(true);
+        $reamingTime = (($currentTime - $this->startTime) / $this->progressCurrent) * ($this->progressMax - $this->progressCurrent);
 
-        $progress = str_pad(number_format(floor($percentage * 100) / 100, 2), 6, ' ', STR_PAD_LEFT) . '%' . ' (' .
-            number_format($this->progressCurrent) . '/' . number_format($this->progressMax) . ')';
+        $formattedPercentage = str_pad(number_format(floor($percentage * 100) / 100, 2), 6, ' ', STR_PAD_LEFT) . '%';
+        $formattedCurrent = number_format($this->progressCurrent);
+        $formattedMax = number_format($this->progressMax);
+
+        $filledBar = '<progress>' . str_pad('', floor($percentage / 2), '#') . '</progress>';
+        $emptyBar = str_pad('', 50 - floor($percentage / 2), '-');
+
+        $progressbar = "\r" . $filledBar . $emptyBar;
+        $progress = $formattedPercentage . ' (' . $formattedCurrent . '/' . $formattedMax . ') (' . date('H:i:s', $reamingTime) . ')';
 
         $this->output->write($progressbar . ' ' . $progress, $this->progressCurrent == $this->progressMax);
     }
