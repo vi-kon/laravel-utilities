@@ -11,7 +11,7 @@ use Symfony\Component\Console\Formatter\OutputFormatterStyle;
  *
  * @package ViKon\Utilities
  */
-trait ConsoleProgress {
+trait ConsoleProgressbar {
     /** @var int */
     protected $progressCurrent = 0;
 
